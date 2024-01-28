@@ -19,13 +19,7 @@ public class FileChange {
         this.properties = properties;
     }
 
-    public Properties getProperties() {
-        return properties;
-    }
-    public void setProperties(Properties properties) {
-        this.properties = properties;
-    }
-    public boolean isExist(String parameter){
+    private boolean isExist(String parameter){
         if(properties.getProperty(parameter)!=null){
             return true;
         }
@@ -37,11 +31,11 @@ public class FileChange {
             logger.log(Level.SEVERE,"Mode is not recognized: " + properties.getProperty("mode"));
             return;
         }
-        else if(!isExist("suffix") || properties.getProperty("suffix").equals("")){
+        if(!isExist("suffix") || properties.getProperty("suffix").equals("")){
             logger.log(Level.SEVERE,"No suffix is configured");
             return;
         }
-        else if(!isExist("files") || properties.getProperty("files").equals("")){
+        if(!isExist("files") || properties.getProperty("files").equals("")){
             logger.log(Level.WARNING,"No files are configured to be copied/moved");
             return;
         }
@@ -78,7 +72,7 @@ public class FileChange {
             }
         }
     }
-    public String pasteSuffix(String name){
+    private String pasteSuffix(String name){
         String[] splitName = name.split("[.]");
         List<String> arrayName = new ArrayList<>(Arrays.asList(splitName));
         arrayName.add(1,properties.getProperty("suffix"));
@@ -86,7 +80,7 @@ public class FileChange {
         name = String.join("",arrayName);
         return name;
     }
-    public ArrayList<String> getFiles(String filesPath){
+    private ArrayList<String> getFiles(String filesPath){
         String[] splitName = filesPath.split(":");
         ArrayList<String> arrayName = new ArrayList<>(Arrays.asList(splitName));
         return arrayName;

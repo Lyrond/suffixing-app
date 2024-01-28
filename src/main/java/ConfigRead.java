@@ -7,13 +7,6 @@ public class ConfigRead {
         this.configPath = configPath;
     }
 
-    public String getConfigPath() {
-        return configPath;
-    }
-
-    public void setConfigPath(String configPath) {
-        this.configPath = configPath;
-    }
     public Properties readData() throws Exception {
         FileReader reader = new FileReader(configPath);
         Properties p = new Properties();
