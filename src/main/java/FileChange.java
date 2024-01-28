@@ -53,7 +53,7 @@ public class FileChange {
                     Files.copy(file.toPath(),
                             newFile.toPath(),
                             StandardCopyOption.REPLACE_EXISTING);
-                    logger.log(Level.INFO,path +" -> "+ pasteSuffix(path));
+                    logger.log(Level.INFO,path +"-> "+ pasteSuffix(path));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
